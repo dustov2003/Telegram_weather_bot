@@ -2,7 +2,8 @@ import telebot
 from telebot import types
 import requests
 
-bot = telebot.TeleBot('5747004984:AAEm4aEF76p7VVWZVQGt9XbcOJMU-UT5dKU')
+bot = telebot.TeleBot('Your ')
+api="Your API-key from https://openweathermap.org/"
 
 @bot.message_handler(commands=['help'])
 def help(message):
@@ -25,7 +26,7 @@ def start(message):
             lang = 'ru'
             bot.send_message(message.chat.id, 'Введите название города:', reply_markup=types.ReplyKeyboardRemove())
         def help(message):
-            url = "https://api.openweathermap.org/data/2.5/weather?lang=" + lang + "&units=metric&q=" + message.text + "&appid=aa710e11052f210bd165425d720d4a4f"
+            url = "https://api.openweathermap.org/data/2.5/weather?lang=" + lang + "&units=metric&q=" + message.text + "&appid="+api
             response = requests.get(url)
             data = response.json()
             if (len(data) < 3):
